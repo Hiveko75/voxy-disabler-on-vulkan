@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "voxy-disabler-on-vulkan",
+  "version": "${version}",
+  "name": "Voxy Disabler on Vulkan",
+  "description": "Stops Voxy from forcing the OpenGL graphics API. Does not make Voxy work on Vulkan: when Vulkan is selected the game stays on Vulkan and Voxy is disabled for that session; on OpenGL Voxy works as usual.",
+  "authors": [
+    "Hiveko75"
+  ],
+  "license": "MIT",
+  "environment": "client",
+  "mixins": [
+    {
+      "config": "voxy-disabler-on-vulkan.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "minecraft": ">=26.3-",
+    "fabricloader": ">=0.17.0",
+    "java": ">=25",
+    "voxy": "*"
+  }
+}

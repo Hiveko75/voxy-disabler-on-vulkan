@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "net.voxydisabler.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinecraftDeviceMixin",
+    "VoxyClientMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
