@@ -5,7 +5,7 @@
   "name": "Voxy Disabler on Vulkan",
   "description": "Stops Voxy from forcing the OpenGL graphics API. Does not make Voxy work on Vulkan: when Vulkan is selected the game stays on Vulkan and Voxy is disabled for that session; on OpenGL Voxy works as usual.",
   "authors": [
-    "Hiveko75"
+    "Hiveko"
   ],
   "license": "MIT",
   "environment": "client",

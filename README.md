@@ -47,5 +47,5 @@ The jar is written to `build/libs/`.
 
 ## License
 
-MIT © Hiveko75, see [LICENSE](LICENSE). Voxy itself is a separate, all-rights-reserved project by MCRcortex
+MIT © Hiveko, see [LICENSE](LICENSE). Voxy itself is a separate, all-rights-reserved project by MCRcortex
 and is not affiliated with this add-on.
