@@ -16,7 +16,7 @@
     }
   ],
   "depends": {
-    "minecraft": ">=26.3-",
+    "minecraft": "${minecraft_range}",
     "fabricloader": ">=0.17.0",
     "java": ">=25",
     "voxy": "*"
