@@ -15,4 +15,8 @@ jobs:
           sed -i 's/^minecraft_version=.*/minecraft_version=26.2/' gradle.properties
           ./gradlew dependencies --configuration compileClasspath >/dev/null 2>&1 || true
           find ~/.gradle/caches .gradle -name '*.jar' 2>/dev/null | grep -i minecraft | grep -i 26.2 | grep -v sources | head -5
-          for j in $(find ~/.gradle/caches .gradle -name '*.jar' 2>/dev/null | grep -i minecraft | grep -i 26.2 | grep -v sources | head -3); do echo "## $j"; unzip -l "$j" | awk '{print $4}' | grep -i -E "vulkan|renderpearl|GpuBackend|BackendCreation|GraphicsBackend" | head -15; done
+          J=$HOME/.gradle/caches/fabric-loom/26.2/minecraft-merged.jar
+          for c in com.mojang.blaze3d.systems.GpuBackend com.mojang.blaze3d.systems.BackendCreationException; do echo "## $c"; javap -cp $J $c; done
+          unzip -l $J | awk '{print $4}' | grep -E "GlBackend|VulkanBackend|GpuDebugOptions|GpuDevice\.class" 
+          echo "## Minecraft.<init> createDevice call"
+          javap -cp $J -c -p net.minecraft.client.Minecraft | grep -n -i "createDevice\|GpuBackend" | head
