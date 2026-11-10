@@ -2,24 +2,31 @@ plugins {
     id 'net.fabricmc.fabric-loom' version "${loom_version}"
 }
 
-version = project.mod_version
+def mc = (findProperty('mc') ?: project.mc_default).toString()
+def v = new Properties()
+file("versions/${mc}.properties").withInputStream { v.load(it) }
+
+version = "${project.mod_version}+mc${mc}"
 group = project.maven_group
 
 base {
     archivesName = project.archives_base_name
 }
 
+sourceSets.main.java.srcDir "platform/mc${mc}/java"
+
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    minecraft "com.mojang:minecraft:${v.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${v.loader_version}"
     // Voxy is not needed at compile time: its classes are targeted by name only,
     // so no Voxy code is copied or bundled into this jar.
 }
 
 processResources {
-    inputs.property "version", project.version
+    def props = [version: project.version, minecraft_range: v.minecraft_range]
+    inputs.properties props
     filesMatching("fabric.mod.json") {
-        expand "version": project.version
+        expand props
     }
 }
 
