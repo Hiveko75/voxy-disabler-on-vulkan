@@ -32,3 +32,4 @@ jobs:
         with:
           name: voxy-disabler-on-vulkan-${{ matrix.mc }}
           path: build/libs/*.jar
+          retention-days: 14
